@@ -1,0 +1,11 @@
+{
+  "_id": "602995fae26a1f32cdf65458",
+  "type": "RESTAURANT",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [125.6, 10.1]
+  },
+  "properties": {
+    "name": "MICHEALS_PIZZA_001"
+  }
+}
