@@ -5,6 +5,7 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import ist311.utils.ConnectDB;
 
@@ -30,11 +31,12 @@ public class PostRating {
     private Timestamp timestamp;
 
     // Constructor - assume data is already collected from GUI
-    PostRating (int user_id, Pair<String, String> user_name, int business_id, String business_name, double user_safety_rating,
+    public PostRating (int user_id, Pair<String, String> user_name, int business_id, String business_name, double user_safety_rating,
                 List<String> tags, String user_review){
         this.user_id = user_id;
         this.user_name = user_name;
         this.business_id = business_id;
+        this.business_name = business_name;
         this.user_safety_rating = user_safety_rating;
         this.tags = tags;
         this.user_review = user_review;
@@ -55,17 +57,27 @@ public class PostRating {
             MongoCollection<Document> table = database.getCollection(getBusiness_name());
 
             // Create Document and create Unique ID
-            Document doc = new Document("_id", 42);
+            Document doc = new Document("_id", new ObjectId().toString());
+
+            // Process the data into a BSON readable format
+            Pair<String, String> temp = getUser_name();
+            String full_name = temp.getValue0() + " " + temp.getValue1();
+            List<String> temp_list = getTags();
+            String temp_string = temp_list.toString();
+            temp_string = temp_string.replace("[", "");
+            temp_string = temp_string.replace("]", "");
+            Timestamp temp_timestamp = getTimestamp();
+            String temp_string_2 = temp_timestamp.toString();
 
             // Add data to Document
             doc.append("user_id", getUser_id());
-            doc.append("user_name", getUser_name());
+            doc.append("user_name", full_name);
             doc.append("business_id", getBusiness_id());
             doc.append("business_name", getBusiness_name());
             doc.append("user_safety_rating", getUser_safety_rating());
-            doc.append("tags", getTags());
+            doc.append("tags", temp_string);
             doc.append("user_review", getUser_review());
-            doc.append("timestamp", getTimestamp());
+            doc.append("timestamp", temp_string_2);
 
             // Add document to database
             table.insertOne(doc);
