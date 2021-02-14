@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Insert user review into business's specific MongoDB collection and return update from collection.
+ * Insert user review into business's specific MongoDB collection.
  * @author Jason C. Nucciarone
  *
  */
