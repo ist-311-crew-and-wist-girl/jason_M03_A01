@@ -63,9 +63,7 @@ public class PostRating {
             Pair<String, String> temp = getUser_name();
             String full_name = temp.getValue0() + " " + temp.getValue1();
             List<String> temp_list = getTags();
-            String temp_string = temp_list.toString();
-            temp_string = temp_string.replace("[", "");
-            temp_string = temp_string.replace("]", "");
+            temp_list.toArray();
             Timestamp temp_timestamp = getTimestamp();
             String temp_string_2 = temp_timestamp.toString();
 
@@ -75,7 +73,7 @@ public class PostRating {
             doc.append("business_id", getBusiness_id());
             doc.append("business_name", getBusiness_name());
             doc.append("user_safety_rating", getUser_safety_rating());
-            doc.append("tags", temp_string);
+            doc.append("tags", temp_list);
             doc.append("user_review", getUser_review());
             doc.append("timestamp", temp_string_2);
 
