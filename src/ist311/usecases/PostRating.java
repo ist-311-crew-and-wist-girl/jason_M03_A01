@@ -82,6 +82,9 @@ public class PostRating {
             // Add document to database
             table.insertOne(doc);
 
+            // Close database connection
+            mongoClient.close();
+
         } catch(Exception e){
             String error = "Failed to connect to MongoDB instance! Check if MongoDB is running!";
             System.out.println(error);
