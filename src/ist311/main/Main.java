@@ -99,5 +99,27 @@ public class Main {
                 user_review_3);
         rating_3.updateCollection();
 
+        /*
+          Second, we need to check if we are to search the BUSINESSES
+          database to find a business as well as return that relevant
+          info for the business.
+
+          The assumption that we are making is that we already have the
+          geojson data available for conducting the search. We are also
+          assuming that the user has their devices geolocation API enabled.
+         */
+
+        // Locate first business
+        Pair<Double, Double> coordinates_1 = Pair.with(125.6, 10.1);
+        SearchBusiness business_1 = new SearchBusiness(coordinates_1);
+        String business_location_1 = business_1.searchByGeoLocation();
+        System.out.println(business_location_1);
+
+        // Locate second business
+        Pair<Double, Double> coordinates_2 = Pair.with(70.6, 12.1);
+        SearchBusiness business_2 = new SearchBusiness(coordinates_2);
+        String business_location_2 = business_2.searchByGeoLocation();
+        System.out.println(business_location_2);
+
     }
 }
