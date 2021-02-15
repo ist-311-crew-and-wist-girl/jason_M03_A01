@@ -4,6 +4,7 @@ package ist311.main;
 import ist311.usecases.PostRating;
 import ist311.usecases.SearchBusiness;
 
+import org.bson.Document;
 import org.javatuples.Pair;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,10 @@ public class Main {
                 tags_1,
                 user_review_1);
         rating_1.updateCollection();
+        ArrayList<Document> ratings_for_1 = rating_1.refresh();
+        for (int i = 0; i < ratings_for_1.size(); i++) {
+            System.out.println(ratings_for_1.get(i));
+        }
 
         // Create another document
         int user_id_2 = 1002;
@@ -77,6 +82,10 @@ public class Main {
                 tags_2,
                 user_review_2);
         rating_2.updateCollection();
+        ArrayList<Document> ratings_for_2 = rating_2.refresh();
+        for (int i = 0; i < ratings_for_2.size(); i++) {
+            System.out.println(ratings_for_2.get(i));
+        }
 
         // Create document in a different collection
         int user_id_3 = 1003;
@@ -98,6 +107,10 @@ public class Main {
                 tags_3,
                 user_review_3);
         rating_3.updateCollection();
+        ArrayList<Document> ratings_for_3 = rating_3.refresh();
+        for (int i = 0; i < ratings_for_3.size(); i++) {
+            System.out.println(ratings_for_3.get(i));
+        }
 
         /*
           Second, we need to check if we are to search the BUSINESSES

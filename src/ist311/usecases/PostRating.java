@@ -3,6 +3,7 @@ package ist311.usecases;
 // Import local packages here
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -11,11 +12,13 @@ import ist311.utils.ConnectDB;
 
 import org.javatuples.Pair;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 /**
- * Insert user review into business's specific MongoDB collection.
+ * Insert user review into business's specific MongoDB collection, and then
+ * refresh the UI by returning the Document(s) returned by MongoDB.
  * @author Jason C. Nucciarone
  *
  */
@@ -80,11 +83,32 @@ public class PostRating {
             // Add document to database
             table.insertOne(doc);
 
-            // Close database connection
-            mongoClient.close();
-
-        } catch(Exception e){
+        } catch (Exception e){
             String error = "Failed to connect to MongoDB instance! Check if MongoDB is running!";
+            System.out.println(error);
+            throw e;
+        }
+    }
+
+    public ArrayList<Document> refresh(){
+        try {
+            // Refresh the business page by returning Documents from collection
+            MongoClient mongoClient = getConn();
+            MongoDatabase database = mongoClient.getDatabase("BUSINESS_REVIEW");
+            MongoCollection<Document> table = database.getCollection(getBusiness_name());
+
+            // Search the collection by business ID
+            ArrayList<Document> docs = new ArrayList<>();
+            BasicDBObject query = new BasicDBObject("business_id", getBusiness_id());
+            try (MongoCursor<Document> cursor = table.find(query).iterator()){
+                while (cursor.hasNext()){
+                    docs.add(cursor.next());
+                }
+                return docs;
+            }
+
+        } catch (Exception e){
+            String error = "Failed to refresh UI! Check MongoDB instance";
             System.out.println(error);
             throw e;
         }
