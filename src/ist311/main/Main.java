@@ -57,9 +57,6 @@ public class Main {
                 user_review_1);
         rating_1.updateCollection();
         ArrayList<Document> ratings_for_1 = rating_1.refresh();
-        for (int i = 0; i < ratings_for_1.size(); i++) {
-            System.out.println(ratings_for_1.get(i));
-        }
 
         // Create another document
         int user_id_2 = 1002;
@@ -83,9 +80,6 @@ public class Main {
                 user_review_2);
         rating_2.updateCollection();
         ArrayList<Document> ratings_for_2 = rating_2.refresh();
-        for (int i = 0; i < ratings_for_2.size(); i++) {
-            System.out.println(ratings_for_2.get(i));
-        }
 
         // Create document in a different collection
         int user_id_3 = 1003;
@@ -108,6 +102,46 @@ public class Main {
                 user_review_3);
         rating_3.updateCollection();
         ArrayList<Document> ratings_for_3 = rating_3.refresh();
+
+        // Print out assumptions and results
+        System.out.println("Assumptions:");
+        System.out.println("Review #1:\n");
+        System.out.println(user_id_1);
+        System.out.println(user_name_1);
+        System.out.println(business_id_1);
+        System.out.println(business_name_1);
+        System.out.println(user_safety_rating_1);
+        System.out.println(tags_1);
+        System.out.println(user_review_1);
+
+        System.out.println("\nReview #2:\n");
+        System.out.println(user_id_2);
+        System.out.println(user_name_2);
+        System.out.println(business_id_2);
+        System.out.println(business_name_2);
+        System.out.println(user_safety_rating_2);
+        System.out.println(tags_2);
+        System.out.println(user_review_2);
+
+        System.out.println("\nReview #3:\n");
+        System.out.println(user_id_3);
+        System.out.println(user_name_3);
+        System.out.println(business_id_3);
+        System.out.println(business_name_3);
+        System.out.println(user_safety_rating_3);
+        System.out.println(tags_3);
+        System.out.println(user_review_3);
+
+        System.out.println("\nResults:\n");
+
+        for (int i = 0; i < ratings_for_1.size(); i++) {
+            System.out.println(ratings_for_1.get(i));
+        }
+
+        for (int i = 0; i < ratings_for_2.size(); i++) {
+            System.out.println(ratings_for_2.get(i));
+        }
+
         for (int i = 0; i < ratings_for_3.size(); i++) {
             System.out.println(ratings_for_3.get(i));
         }
@@ -126,13 +160,19 @@ public class Main {
         Pair<Double, Double> coordinates_1 = Pair.with(125.6, 10.1);
         SearchBusiness business_1 = new SearchBusiness(coordinates_1);
         String business_location_1 = business_1.searchByGeoLocation();
-        System.out.println(business_location_1);
 
         // Locate second business
         Pair<Double, Double> coordinates_2 = Pair.with(70.6, 12.1);
         SearchBusiness business_2 = new SearchBusiness(coordinates_2);
         String business_location_2 = business_2.searchByGeoLocation();
-        System.out.println(business_location_2);
 
+        // Print out assumptions and results
+        System.out.println("\nAssumptions:");
+        System.out.println("First search: " + coordinates_1.toString());
+        System.out.println("Second search: " + coordinates_2.toString());
+
+        System.out.println("\nResults:\n");
+        System.out.println(business_location_1);
+        System.out.println(business_location_2);
     }
 }
