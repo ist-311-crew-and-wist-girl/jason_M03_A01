@@ -106,31 +106,31 @@ public class Main {
         // Print out assumptions and results
         System.out.println("Assumptions:");
         System.out.println("Review #1:\n");
-        System.out.println(user_id_1);
-        System.out.println(user_name_1);
-        System.out.println(business_id_1);
-        System.out.println(business_name_1);
-        System.out.println(user_safety_rating_1);
-        System.out.println(tags_1);
-        System.out.println(user_review_1);
+        System.out.println("User ID: " + user_id_1);
+        System.out.println("User Name: " + user_name_1);
+        System.out.println("Business ID: " + business_id_1);
+        System.out.println("Business Name: " + business_name_1);
+        System.out.println("User Safety Rating: " + user_safety_rating_1);
+        System.out.println("Tags: " + tags_1);
+        System.out.println("User Review: " + user_review_1);
 
         System.out.println("\nReview #2:\n");
-        System.out.println(user_id_2);
-        System.out.println(user_name_2);
-        System.out.println(business_id_2);
-        System.out.println(business_name_2);
-        System.out.println(user_safety_rating_2);
-        System.out.println(tags_2);
-        System.out.println(user_review_2);
+        System.out.println("User ID: " + user_id_2);
+        System.out.println("User Name: " + user_name_2);
+        System.out.println("Business ID: " + business_id_2);
+        System.out.println("Business Name: " + business_name_2);
+        System.out.println("User Safety Rating: " + user_safety_rating_2);
+        System.out.println("Tags: " + tags_2);
+        System.out.println("User Review: " + user_review_2);
 
         System.out.println("\nReview #3:\n");
-        System.out.println(user_id_3);
-        System.out.println(user_name_3);
-        System.out.println(business_id_3);
-        System.out.println(business_name_3);
-        System.out.println(user_safety_rating_3);
-        System.out.println(tags_3);
-        System.out.println(user_review_3);
+        System.out.println("User ID: " + user_id_3);
+        System.out.println("User Name: " + user_name_3);
+        System.out.println("Business ID: " + business_id_3);
+        System.out.println("Business Name: " + business_name_3);
+        System.out.println("User Safety Rating: " + user_safety_rating_3);
+        System.out.println("Tags: " + tags_3);
+        System.out.println("User Review: " + user_review_3);
 
         System.out.println("\nResults:\n");
 
@@ -168,8 +168,8 @@ public class Main {
 
         // Print out assumptions and results
         System.out.println("\nAssumptions:");
-        System.out.println("First search: " + coordinates_1.toString());
-        System.out.println("Second search: " + coordinates_2.toString());
+        System.out.println("First coordinates: " + coordinates_1.toString());
+        System.out.println("Second coordinates: " + coordinates_2.toString());
 
         System.out.println("\nResults:\n");
         System.out.println(business_location_1);
