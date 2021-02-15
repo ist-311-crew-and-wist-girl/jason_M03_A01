@@ -104,7 +104,7 @@ public class Main {
         ArrayList<Document> ratings_for_3 = rating_3.refresh();
 
         // Print out assumptions and results
-        System.out.println("Assumptions:");
+        System.out.println("Assumptions:\n");
         System.out.println("Review #1:\n");
         System.out.println("User ID: " + user_id_1);
         System.out.println("User Name: " + user_name_1);
@@ -167,7 +167,7 @@ public class Main {
         String business_location_2 = business_2.searchByGeoLocation();
 
         // Print out assumptions and results
-        System.out.println("\nAssumptions:");
+        System.out.println("\nAssumptions:\n");
         System.out.println("First coordinates: " + coordinates_1.toString());
         System.out.println("Second coordinates: " + coordinates_2.toString());
 
